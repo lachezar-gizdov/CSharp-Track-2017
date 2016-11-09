@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4662E6A1-D1A1-4291-9128-A3A713EDC2B6}</ProjectGuid>
+    <ProjectGuid>{C11A27C5-5DD1-4BA0-A7B4-50683074DBA5}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_07.SelectionSort</RootNamespace>
-    <AssemblyName>07.SelectionSort</AssemblyName>
+    <RootNamespace>_08.MaximumSum</RootNamespace>
+    <AssemblyName>08.MaximumSum</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SelectionSort.cs" />
+    <Compile Include="MaximumSum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

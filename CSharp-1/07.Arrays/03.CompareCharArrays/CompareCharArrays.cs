@@ -13,10 +13,7 @@ class CompareCharArrays
         {
             shorter = secondArray;
         }
-        else if (firstArray.Length < secondArray.Length)
-        {
-            shorter = firstArray;
-        }
+
         else
         {
             shorter = firstArray;
@@ -48,7 +45,7 @@ class CompareCharArrays
             {
                 Console.WriteLine(">");
             }
-            else if (firstArray.Length > secondArray.Length)
+            else if (firstArray.Length < secondArray.Length)
             {
                 Console.WriteLine("<");
             }
