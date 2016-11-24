@@ -1,67 +1,50 @@
 ﻿using System;
+using System.Linq;
 
 class MaximumSum
 {
+    static int GetSum(int[,] matrix, int col, int row, int square)
+    {
+        int sum = 0;
+        for (int i = 0; i < square; i++)
+        {
+            for (int j = 0; j < square; j++)
+            {
+                sum += matrix[col + i, row + j];
+            }
+        }
+        return sum;
+    }
+
     static void Main()
     {
-        int n = 4;
-        int digit = 1;
-        int Row = n - 1;
-        int[,] matrix = new int[n, n];
-        int Col = 0;
-        int startRow = n - 1;
-        int startCol = 0;
+        int[] nm = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
+        int n = nm[0];
+        int m = nm[1];
+        int[,] matrix = new int[n, m];
+        int currSum = 0;
+        int maxSum = int.MinValue;
+        int square = 3;
 
-        while (digit < n * n)
+        for (int row = 0; row < n; row++)
         {
-            if (Row == (n - 1) && Col < (n - 1))        //Filling matrix
-            {
-                if (digit == 1)
-                {
-                    matrix[Col, Row] = digit;
-                }
-                startRow--;
-                startCol = 0;
-                Row = startRow;
-                Col = startCol;
-                digit++;
-                matrix[Col, Row] = digit;
+            int[] help = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
 
-                while (Row < (n - 1) && Col < (n - 1))
-                {
-                    Row++;
-                    Col++;
-                    digit++;
-                    matrix[Col, Row] = digit;
-                }
-            }
-            if (Row <= (n - 1) && Col == (n - 1))
+            for (int col = 0; col < m; col++)
             {
-                startRow = 0;
-                startCol++;
-                Row = startRow;
-                Col = startCol;
-                digit++;
-                matrix[Col, Row] = digit;
-
-                while (Col < (n - 1))
-                {
-                    Col++;
-                    Row++;
-                    digit++;
-                    matrix[Col, Row] = digit;
-                }
+                matrix[row, col] = help[col];
             }
         }
-        for (int c = 0; c < n; c++)           //Printing
+
+        for (int col = 0; col <= n - square; col++)
         {
-            for (int r = 0; r < n; r++)
+            for (int row = 0; row <= m - square; row++)
             {
-                Console.Write("{0, 4}", matrix[r, c]);
+                currSum = GetSum(matrix, col, row, square);
+                maxSum = Math.Max(maxSum, currSum);
             }
-            Console.WriteLine();
         }
-        digit = 1;
-        Console.WriteLine();
+
+        Console.WriteLine(maxSum);
     }
 }
