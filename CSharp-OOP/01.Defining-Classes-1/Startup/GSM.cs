@@ -8,8 +8,18 @@ namespace Startup
         {
             GSM nexus = new GSM("LG", "Nexus 5X");
 
-            Console.WriteLine(nexus.model);
+            DisplayInfo();
 
+        }
+
+        public void DisplayInfo(GSM phone)
+        {
+            Console.WriteLine(phone.manufacturer);
+            Console.WriteLine(phone.model);
+            Console.WriteLine(phone.price);
+            Console.WriteLine(phone.owner);
+            Console.WriteLine(phone.battery);
+            Console.WriteLine(phone.display);
         }
 
         private string model;
@@ -65,18 +75,18 @@ namespace Startup
             }
         }
 
-        public Battery Battery {
+        public Battery battery {
             get
             {
                 return new Battery();
             }
             set
             {
-                this.Battery = value;
+                this.battery = value;
             }
         }
 
-        public Display Display
+        public Display display
         {
             get
             {
@@ -84,7 +94,7 @@ namespace Startup
             }
             set
             {
-                this.Display = value;
+                this.display = value;
             }
 
         }
@@ -108,6 +118,25 @@ namespace Startup
             this.model = model;
             this.price = price;
             this.owner = owner;
+        }
+
+        public GSM(string manufacturer, string model, int price, string owner, Battery battery)
+        {
+            this.manufacturer = manufacturer;
+            this.model = model;
+            this.price = price;
+            this.owner = owner;
+            this.battery = battery;
+        }
+
+        public GSM(string manufacturer, string model, int price, string owner, Battery battery, Display display)
+        {
+            this.manufacturer = manufacturer;
+            this.model = model;
+            this.price = price;
+            this.owner = owner;
+            this.battery = battery;
+            this.display = display;
         }
     }
 
