@@ -8,8 +8,22 @@ namespace Startup
         {
             GSM nexus = new GSM("LG", "Nexus 5X");
 
-            DisplayInfo();
+            //DisplayInfo(nexus);
 
+        }
+
+        static GSM iphone4S;
+
+        static public GSM Iphone4S
+        {
+            get
+            {
+                return iphone4S;
+            }
+            set
+            {
+                iphone4S = value;
+            }
         }
 
         public void DisplayInfo(GSM phone)
