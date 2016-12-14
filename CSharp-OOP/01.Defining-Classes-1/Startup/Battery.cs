@@ -8,14 +8,28 @@ namespace Startup
 {
     class Battery
     {
-        BatteryType batteryModel = new BatteryType();
+        private double hoursIdle;
+        private double hoursTalk;
 
-        double hoursIdle;
-        double hoursTalk;
-
-
-
-        public double HoursIdle { get; set; }
-        public double HoursTalk { get; set; }
+        public double HoursIdle {
+            get
+            {
+                return this.hoursIdle;
+            }
+            set
+            {
+                this.hoursIdle = value;
+            }
+        }
+        public double HoursTalk {
+            get
+            {
+                return this.hoursTalk;
+            }
+            set
+            {
+                this.hoursTalk = value;
+            }
+        }
     }
 }

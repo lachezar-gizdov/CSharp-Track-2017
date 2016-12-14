@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Startup
 {
@@ -10,10 +6,10 @@ namespace Startup
     {
         static void Main()
         {
-            GSM nexus = new GSM();
-            nexus.model = "Nexus 5X";
-            nexus.manufacturer = "LG";
-            Console.WriteLine(nexus);
+            GSM nexus = new GSM("LG", "Nexus 5X");
+
+            Console.WriteLine(nexus.model);
+
         }
 
         private string model;
@@ -67,6 +63,12 @@ namespace Startup
             {
                 this.owner = value;
             }
+        }
+
+        public GSM(string manufacturer, string model)
+        {
+            this.manufacturer = manufacturer;
+            this.model = model;
         }
     }
 

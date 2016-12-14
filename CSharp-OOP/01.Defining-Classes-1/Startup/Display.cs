@@ -8,7 +8,28 @@ namespace Startup
 {
     class Display
     {
-        public double DisplaySize { get; set; }
-        public long DisplayColors { get; set; }
+        private double displaySize;
+        private long displayColors;
+
+        public double DisplaySize {
+            get
+            {
+                return this.displaySize;
+            }
+            set
+            {
+                this.displaySize = value;
+            }
+        }
+        public long DisplayColors {
+            get
+            {
+                return this.displayColors;
+            }
+            set
+            {
+                this.displayColors = value;
+            }
+        }
     }
 }
