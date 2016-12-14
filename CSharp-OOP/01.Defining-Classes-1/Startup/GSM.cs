@@ -65,10 +65,49 @@ namespace Startup
             }
         }
 
+        public Battery Battery {
+            get
+            {
+                return new Battery();
+            }
+            set
+            {
+                this.Battery = value;
+            }
+        }
+
+        public Display Display
+        {
+            get
+            {
+                return new Display();
+            }
+            set
+            {
+                this.Display = value;
+            }
+
+        }
+
         public GSM(string manufacturer, string model)
         {
             this.manufacturer = manufacturer;
             this.model = model;
+        }
+
+        public GSM(string manufacturer, string model, int price)
+        {
+            this.manufacturer = manufacturer;
+            this.model = model;
+            this.price = price;
+        }
+
+        public GSM(string manufacturer, string model, int price, string owner)
+        {
+            this.manufacturer = manufacturer;
+            this.model = model;
+            this.price = price;
+            this.owner = owner;
         }
     }
 
