@@ -13,12 +13,14 @@
         // Fields
         private double hoursIdle;
         private double hoursTalk;
+        private BatteryType type;
 
         //Constructors
-        public Battery(double hoursIdle, double hoursTalk)
+        public Battery(double hoursIdle, double hoursTalk, BatteryType type)
         {
             this.HoursIdle = hoursIdle;
             this.HoursTalk = hoursTalk;
+            this.Type = type;
         }
 
         //Properties
@@ -42,6 +44,18 @@
             set
             {
                 this.hoursTalk = value;
+            }
+        }
+
+        public BatteryType Type
+        {
+            get
+            {
+                return this.type;
+            }
+            set
+            {
+                this.type = value;
             }
         }
     }

@@ -14,9 +14,15 @@
         private Display display;
 
         //IPhone
-        static GSM iPhone4S;
+        public static GSM iPhone4S;
+        static string iPhoneModel;
+        static string iPhoneManufacturer;
+        static int iPhonePrice;
+        static string iPhoneOwner;
+        static Battery iPhoneBattery;
+        static Display iPhoneDisplay;
 
-        public GSM IPhone4S
+        public static GSM IPhone4S
         {
             get
             {
@@ -24,12 +30,12 @@
             }
             set
             {
-                manufacturer = "Apple";
-                model = "IPhone 4S";
-                price = 500;
-                owner = "Pesho";
-                battery = new Battery(24, 10);
-                display = new Display(4, 64000000);
+                iPhoneManufacturer = "Apple";
+                iPhoneModel = "IPhone 4S";
+                iPhonePrice = 500;
+                iPhoneOwner = "Pesho";
+                iPhoneBattery = new Battery(24, 10, BatteryType.LiIon);
+                iPhoneDisplay = new Display(4, 64000000);
             }
         }
 
