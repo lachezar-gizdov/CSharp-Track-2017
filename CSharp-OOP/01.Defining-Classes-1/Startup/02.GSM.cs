@@ -1,10 +1,11 @@
 ﻿namespace Startup
 {
     using System;
+    using System.Collections.Generic;
 
     class GSM
     {
-
+        //fields
         private string model;
         private string manufacturer;
         private int price;
@@ -34,6 +35,7 @@
 
         //IPhone
 
+        //Constructors
         public GSM(string manufacturer, string model)
         {
             this.Manufacturer = manufacturer;
@@ -74,6 +76,7 @@
             this.Display = display;
         }
 
+        //Properties
         public string Manufacturer
         {
             get
@@ -148,6 +151,9 @@
 
         }
 
+        public List<Call> CallHistory { get; set; }
+
+        //Methods
         public static void DisplayInfo(GSM phone)
         {
             Console.WriteLine(phone.manufacturer);
@@ -156,6 +162,33 @@
             Console.WriteLine(phone.owner);
             Console.WriteLine(phone.Battery);
             Console.WriteLine(phone.Display);
+        }
+
+        public static void AddCall(List<Call> CallHistory)
+        {
+            //CallHistory.Add();
+        }
+
+        public static void DeleteCall(List<Call> CallHistory)
+        {
+            //CallHistory.Remove();
+        }
+
+        public static int CalculatePrice(List<Call> CallHistory, double price)
+        {
+            int totalPrice = 0;
+
+            foreach (var call in CallHistory)
+            {
+                //implementation
+            }
+
+            return totalPrice;
+        }
+
+        public static void ClearCallHistory(List<Call> CallHistory)
+        {
+            CallHistory.Clear();
         }
     }
 

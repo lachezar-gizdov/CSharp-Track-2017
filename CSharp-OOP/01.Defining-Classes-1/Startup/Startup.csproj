@@ -49,6 +49,8 @@
     <Compile Include="01.EntryPoint.cs" />
     <Compile Include="02.GSM.cs" />
     <Compile Include="05.GSMTest.cs" />
+    <Compile Include="06.Call.cs" />
+    <Compile Include="07.GSMCallHistoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
