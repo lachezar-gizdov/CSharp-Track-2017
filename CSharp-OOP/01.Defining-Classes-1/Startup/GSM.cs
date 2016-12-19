@@ -12,7 +12,7 @@
         private string owner;
         private Battery battery;
         private Display display;
-        private List<Call> callHistory;
+        private static List<Call> callHistory;
 
         //IPhone
         public static GSM iPhone4S;
@@ -158,17 +158,17 @@
 
         }
 
-        public List<Call> CallHistory {
+        public static List<Call> CallHistory {
             get
             {
-                return this.callHistory;
+                return callHistory;
             }
             set
             {
                 callHistory = value;
             }
         }
-        
+
         //Methods
         public static void DisplayInfo(GSM phone)
         {
@@ -197,21 +197,21 @@
             Console.WriteLine("-------------------------------");
         }
 
-        public static void AddCall(List<Call> CallHistory, Call lastCall)
+        public void AddCall(Call lastCall)
         {
-            CallHistory.Add(lastCall);
+            callHistory.Add(lastCall);
         }
 
-        public static void DeleteCall(List<Call> CallHistory, Call lastCall)
+        public void DeleteCall(Call lastCall)
         {
-            CallHistory.Remove(lastCall);
+            callHistory.Remove(lastCall);
         }
-        public static void ClearCallHistory(List<Call> CallHistory)
+        public void ClearCallHistory()
         {
-            CallHistory.Clear();
+            callHistory.Clear();
         }
 
-        public static double CalculatePrice(List<Call> CallHistory, double price)
+        public double CalculatePrice(double price)
         {
             double totalPrice = 0;
             double totalDuration = 0;

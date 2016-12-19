@@ -46,7 +46,7 @@
     <Compile Include="Battery.cs" />
     <Compile Include="BatteryType.cs" />
     <Compile Include="Display.cs" />
-    <Compile Include="EntryPoint.cs" />
+    <Compile Include="StartUp.cs" />
     <Compile Include="GSM.cs" />
     <Compile Include="GSMTest.cs" />
     <Compile Include="Call.cs" />

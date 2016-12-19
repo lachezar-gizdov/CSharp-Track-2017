@@ -2,11 +2,11 @@
 {
     using System;
 
-    class EntryPoint
+    class StartUp
     {
         static void Main()
         {
-            GSMTest.Test();
+            GSMTest.GSMTests();
         }
     }
 }
