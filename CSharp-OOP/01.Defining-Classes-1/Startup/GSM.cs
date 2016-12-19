@@ -6,8 +6,8 @@
     class GSM
     {
         //fields
-        private string model;
         private string manufacturer;
+        private string model;
         private int? price;
         private string owner;
         private Battery battery;
@@ -49,37 +49,23 @@
             this.Model = model;
         }
 
-        public GSM(string manufacturer, string model, int price)
+        public GSM(string manufacturer, string model, int price) : this (manufacturer, model)
         {
-            this.Manufacturer = manufacturer;
-            this.Model = model;
             this.Price = price;
         }
 
-        public GSM(string manufacturer, string model, int price, string owner = null)
+        public GSM(string manufacturer, string model, int price, string owner = null) : this(manufacturer, model, price)
         {
-            this.Manufacturer = manufacturer;
-            this.Model = model;
-            this.Price = price;
             this.Owner = owner;
         }
 
-        public GSM(string manufacturer, string model, int price, string owner = null, Battery battery = null)
+        public GSM(string manufacturer, string model, int price, string owner = null, Battery battery = null) : this(manufacturer, model, price, owner)
         {
-            this.Manufacturer = manufacturer;
-            this.Model = model;
-            this.Price = price;
-            this.Owner = owner;
             this.Battery = battery;
         }
 
-        public GSM(string manufacturer, string model, int price, string owner = null, Battery battery = null, Display display = null)
+        public GSM(string manufacturer, string model, int price, string owner = null, Battery battery = null, Display display = null) : this(manufacturer, model, price, owner, battery)
         {
-            this.Manufacturer = manufacturer;
-            this.Model = model;
-            this.Price = price;
-            this.Owner = owner;
-            this.Battery = battery;
             this.Display = display;
         }
 
@@ -194,7 +180,7 @@
                 Console.Write("Size = {0}, Colors = {1}", phone.Display.DisplaySize, phone.Display.DisplayColors);
                 Console.WriteLine();
             }
-            Console.WriteLine("-------------------------------");
+            Console.WriteLine("----------------------------------------------------");
         }
 
         public void AddCall(Call lastCall)
@@ -206,9 +192,18 @@
         {
             callHistory.Remove(lastCall);
         }
+
         public void ClearCallHistory()
         {
             callHistory.Clear();
+        }
+
+        public void DisplayCallHistory(List<Call> CallHistory)
+        {
+            foreach (var call in CallHistory)
+            {
+                Console.WriteLine(call);
+            }
         }
 
         public double CalculatePrice(double price)
