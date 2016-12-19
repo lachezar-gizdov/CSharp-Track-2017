@@ -8,6 +8,6 @@
 
     class GSMCallHistoryTest
     {
-
+        GSM Nexus = new GSM("LG", "Nexus", 600, "Lucho", new Battery(10, 15, BatteryType.LiIon));
     }
 }

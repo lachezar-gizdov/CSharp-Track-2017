@@ -8,10 +8,11 @@
         //fields
         private string model;
         private string manufacturer;
-        private int price;
+        private int? price;
         private string owner;
         private Battery battery;
         private Display display;
+        private List<Call> callHistory;
 
         //IPhone
         public static GSM iPhone4S;
@@ -55,7 +56,7 @@
             this.Price = price;
         }
 
-        public GSM(string manufacturer, string model, int price, string owner)
+        public GSM(string manufacturer, string model, int price, string owner = null)
         {
             this.Manufacturer = manufacturer;
             this.Model = model;
@@ -63,7 +64,7 @@
             this.Owner = owner;
         }
 
-        public GSM(string manufacturer, string model, int price, string owner, Battery battery)
+        public GSM(string manufacturer, string model, int price, string owner = null, Battery battery = null)
         {
             this.Manufacturer = manufacturer;
             this.Model = model;
@@ -72,7 +73,7 @@
             this.Battery = battery;
         }
 
-        public GSM(string manufacturer, string model, int price, string owner, Battery battery, Display display)
+        public GSM(string manufacturer, string model, int price, string owner = null, Battery battery = null, Display display = null)
         {
             this.Manufacturer = manufacturer;
             this.Model = model;
@@ -111,7 +112,7 @@
         {
             get
             {
-                return this.price;
+                return this.price.Value;
             }
             set
             {
@@ -157,44 +158,72 @@
 
         }
 
-        public List<Call> CallHistory { get; set; }
-
+        public List<Call> CallHistory {
+            get
+            {
+                return this.callHistory;
+            }
+            set
+            {
+                callHistory = value;
+            }
+        }
+        
         //Methods
         public static void DisplayInfo(GSM phone)
         {
-            Console.WriteLine(phone.manufacturer);
-            Console.WriteLine(phone.model);
-            Console.WriteLine(phone.price);
-            Console.WriteLine(phone.owner);
-            Console.WriteLine(phone.Battery);
-            Console.WriteLine(phone.Display);
-        }
-
-        public static void AddCall(List<Call> CallHistory)
-        {
-            //CallHistory.Add();
-        }
-
-        public static void DeleteCall(List<Call> CallHistory)
-        {
-            //CallHistory.Remove();
-        }
-
-        public static int CalculatePrice(List<Call> CallHistory, double price)
-        {
-            int totalPrice = 0;
-
-            foreach (var call in CallHistory)
+            Console.WriteLine("Phone Manufacturer: {0}",phone.manufacturer);
+            Console.WriteLine("Phone Model: {0}", phone.model);
+            if (phone.price != null)
             {
-                //implementation
+                Console.WriteLine("Phone Price: {0}BGN", phone.price);
             }
-
-            return totalPrice;
+            if (phone.owner != null)
+            {
+                Console.WriteLine("Phone Owner: {0}", phone.owner);
+            }
+            if (phone.Battery != null)
+            {
+                Console.Write("Phone Battery: ");
+                Console.Write("Hours Idle = {0}, Hours Talk = {1}, Type = {2}", phone.Battery.HoursIdle, phone.Battery.HoursTalk, phone.Battery.Type);
+                Console.WriteLine();
+            }
+            if (phone.Display != null)
+            {
+                Console.Write("Phone Display: ");
+                Console.Write("Size = {0}, Colors = {1}", phone.Display.DisplaySize, phone.Display.DisplayColors);
+                Console.WriteLine();
+            }
+            Console.WriteLine("-------------------------------");
         }
 
+        public static void AddCall(List<Call> CallHistory, Call lastCall)
+        {
+            CallHistory.Add(lastCall);
+        }
+
+        public static void DeleteCall(List<Call> CallHistory, Call lastCall)
+        {
+            CallHistory.Remove(lastCall);
+        }
         public static void ClearCallHistory(List<Call> CallHistory)
         {
             CallHistory.Clear();
+        }
+
+        public static double CalculatePrice(List<Call> CallHistory, double price)
+        {
+            double totalPrice = 0;
+            double totalDuration = 0;
+
+            foreach (var call in CallHistory)
+            {
+                totalDuration += call.CallDuration;
+            }
+
+            totalPrice = totalDuration * price;
+
+            return totalPrice;
         }
     }
 
