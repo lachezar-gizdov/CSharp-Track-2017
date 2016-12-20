@@ -166,12 +166,12 @@
 
         public void AddCall(Call lastCall)
         {
-            callHistory.Add(lastCall);
+            CallHistory.Add(lastCall);
         }
 
         public void DeleteCall(Call lastCall)
         {
-            callHistory.Remove(lastCall);
+            CallHistory.Remove(lastCall);
         }
 
         public void ClearCallHistory()
@@ -181,7 +181,7 @@
 
         public void DisplayCallHistory()
         {
-            if (callHistory.Count == 0)
+            if (CallHistory.Count == 0)
             {
                 Console.WriteLine("Empty Call History Log");
             }
@@ -191,27 +191,8 @@
             }
             foreach (var call in CallHistory)
             {
-                Console.Write("Date = {0} | ", call.Date);
-                Console.Write("Time = {0} | ", call.Time);
-                Console.Write("Called Number = {0} | ", call.CalledNumber);
-                Console.WriteLine("Duration = {0}", call.CallDuration);
+                call.MethodDisplay();
             }
-            Console.WriteLine("----------------------------------------------------");
-        }
-
-        public void CalculatePrice(double price)
-        {
-            double totalPrice = 0;
-            double totalDuration = 0;
-
-            foreach (var call in CallHistory)
-            {
-                totalDuration += call.CallDuration;
-            }
-
-            totalPrice = totalDuration * price;
-
-            Console.WriteLine("Total Price for the calls: {0:F2}BGN", totalPrice);
             Console.WriteLine("----------------------------------------------------");
         }
     }

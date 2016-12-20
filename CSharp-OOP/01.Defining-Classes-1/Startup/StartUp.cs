@@ -1,13 +1,13 @@
 ﻿namespace Startup
 {
-    using System;
-
     class StartUp
     {
-        static void Main()
+        public static void Main()
         {
+            //Problem 7. GSM test
             GSMTest.GSMTests();
 
+            //Problem 12. Call history test
             GSMCallHistoryTest.TestCallHistory();
         }
     }

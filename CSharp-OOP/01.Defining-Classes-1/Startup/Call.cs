@@ -1,5 +1,7 @@
 ﻿namespace Startup
 {
+    using System;
+
     class Call
     {
         //fields
@@ -59,6 +61,31 @@
             {
                 this.callDuration = value;
             }
+        }
+
+        //Methods
+        public void MethodDisplay()
+        {
+                Console.Write("Date = {0} | ", Date);
+                Console.Write("Time = {0} | ", Time);
+                Console.Write("Called Number = {0} | ", CalledNumber);
+                Console.WriteLine("Duration = {0}", CallDuration);
+        }
+
+        public static void CalculatePrice(double price)
+        {
+            double totalPrice = 0;
+            double totalDuration = 0;
+
+            foreach (var call in GSM.CallHistory)
+            {
+                totalDuration += call.CallDuration;
+            }
+            totalDuration /= 60;
+            totalPrice = totalDuration * price;
+
+            Console.WriteLine("Total Price for the calls: {0:F2}BGN", totalPrice);
+            Console.WriteLine("----------------------------------------------------");
         }
     }
 }

@@ -58,5 +58,11 @@
                 this.type = value;
             }
         }
+
+        //Methods
+        //public static void DisplayBattery()
+        //{
+
+        //}
     }
 }
