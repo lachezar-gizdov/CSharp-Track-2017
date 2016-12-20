@@ -16,8 +16,6 @@ namespace Startup
 
             Nexus.CalculatePrice(0.37);
 
-            
-
             Nexus.ClearCallHistory();
 
             Nexus.DisplayCallHistory();
