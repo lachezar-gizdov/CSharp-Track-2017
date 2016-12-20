@@ -18,9 +18,47 @@
         }
 
         //properties
-        public string Date { get; set; }
-        public string Time { get; set; }
-        public int CalledNumber { get; set; }
-        public double CallDuration { get; set; }
+        public string Date {
+            get
+            {
+                return this.date;
+            }
+            set
+            {
+                this.date = value;
+            }
+        }
+        public string Time {
+            get
+            {
+                return this.time;
+            }
+            set
+            {
+                this.time = value;
+            }
+        }
+        public int CalledNumber
+        {
+            get
+            {
+                return this.calledNumber;
+            }
+            set
+            {
+                this.calledNumber = value;
+            }
+        }
+        public double CallDuration
+        {
+            get
+            {
+                return this.callDuration;
+            }
+            set
+            {
+                this.callDuration = value;
+            }
+        }
     }
 }

@@ -198,7 +198,7 @@
             callHistory.Clear();
         }
 
-        public void DisplayCallHistory(List<Call> CallHistory)
+        public void DisplayCallHistory()
         {
             foreach (var call in CallHistory)
             {

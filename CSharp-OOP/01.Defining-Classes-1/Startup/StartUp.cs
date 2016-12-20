@@ -7,6 +7,7 @@
         static void Main()
         {
             GSMTest.GSMTests();
+            GSMCallHistoryTest.TestCallHistory();
         }
     }
 }
