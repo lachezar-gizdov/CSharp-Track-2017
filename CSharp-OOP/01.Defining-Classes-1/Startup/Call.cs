@@ -6,10 +6,10 @@
         private string date;
         private string time;
         private int calledNumber;
-        private double callDuration;
+        private int callDuration;
 
         //constructors
-        public Call(string date, string time, int CalledNumber, double CallDuration)
+        public Call(string date, string time, int calledNumber, int callDuration)
         {
             this.Date = date;
             this.Time = time;
@@ -49,7 +49,7 @@
                 this.calledNumber = value;
             }
         }
-        public double CallDuration
+        public int CallDuration
         {
             get
             {

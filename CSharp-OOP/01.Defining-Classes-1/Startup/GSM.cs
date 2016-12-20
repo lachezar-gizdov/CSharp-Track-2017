@@ -13,40 +13,14 @@
         private Battery battery;
         private Display display;
         private static List<Call> callHistory;
-
-        //IPhone
         public static GSM iPhone4S;
-        static string iPhoneModel;
-        static string iPhoneManufacturer;
-        static int iPhonePrice;
-        static string iPhoneOwner;
-        static Battery iPhoneBattery;
-        static Display iPhoneDisplay;
-
-        public static GSM IPhone4S
-        {
-            get
-            {
-                return iPhone4S;
-            }
-            set
-            {
-                iPhoneManufacturer = "Apple";
-                iPhoneModel = "IPhone 4S";
-                iPhonePrice = 500;
-                iPhoneOwner = "Pesho";
-                iPhoneBattery = new Battery(24, 10, BatteryType.LiIon);
-                iPhoneDisplay = new Display(4, 64000000);
-            }
-        }
-
-        //IPhone
 
         //Constructors
         public GSM(string manufacturer, string model)
         {
             this.Manufacturer = manufacturer;
             this.Model = model;
+            CallHistory = new List<Call>();
         }
 
         public GSM(string manufacturer, string model, int price) : this (manufacturer, model)
@@ -54,19 +28,26 @@
             this.Price = price;
         }
 
-        public GSM(string manufacturer, string model, int price, string owner = null) : this(manufacturer, model, price)
+        public GSM(string manufacturer, string model, int price, string owner) : this(manufacturer, model, price)
         {
             this.Owner = owner;
         }
 
-        public GSM(string manufacturer, string model, int price, string owner = null, Battery battery = null) : this(manufacturer, model, price, owner)
+        public GSM(string manufacturer, string model, int price, string owner, Battery battery = null) : this(manufacturer, model, price, owner)
         {
             this.Battery = battery;
         }
 
-        public GSM(string manufacturer, string model, int price, string owner = null, Battery battery = null, Display display = null) : this(manufacturer, model, price, owner, battery)
+        public GSM(string manufacturer, string model, int price, string owner, Battery battery = null, Display display = null) : this(manufacturer, model, price, owner, battery)
         {
             this.Display = display;
+        }
+
+        static GSM()
+        {
+            var baterry = new Battery(20, 10, BatteryType.LiIon);
+            var display = new Display(4, 1600000);
+            iPhone4S = new GSM("Apple", "iPhone 4S", 1400, "Pesho", baterry, display);
         }
 
         //Properties
@@ -149,7 +130,7 @@
             {
                 return callHistory;
             }
-            set
+            private set
             {
                 callHistory = value;
             }
@@ -171,13 +152,13 @@
             if (phone.Battery != null)
             {
                 Console.Write("Phone Battery: ");
-                Console.Write("Hours Idle = {0}, Hours Talk = {1}, Type = {2}", phone.Battery.HoursIdle, phone.Battery.HoursTalk, phone.Battery.Type);
+                Console.Write("Hours Idle = {0} | Hours Talk = {1} | Type = {2}", phone.Battery.HoursIdle, phone.Battery.HoursTalk, phone.Battery.Type);
                 Console.WriteLine();
             }
             if (phone.Display != null)
             {
                 Console.Write("Phone Display: ");
-                Console.Write("Size = {0}, Colors = {1}", phone.Display.DisplaySize, phone.Display.DisplayColors);
+                Console.Write("Size = {0} | Colors = {1}", phone.Display.DisplaySize, phone.Display.DisplayColors);
                 Console.WriteLine();
             }
             Console.WriteLine("----------------------------------------------------");
@@ -200,13 +181,25 @@
 
         public void DisplayCallHistory()
         {
+            if (callHistory.Count == 0)
+            {
+                Console.WriteLine("Empty Call History Log");
+            }
+            else
+            {
+                Console.WriteLine("Calls:");
+            }
             foreach (var call in CallHistory)
             {
-                Console.WriteLine(call);
+                Console.Write("Date = {0} | ", call.Date);
+                Console.Write("Time = {0} | ", call.Time);
+                Console.Write("Called Number = {0} | ", call.CalledNumber);
+                Console.WriteLine("Duration = {0}", call.CallDuration);
             }
+            Console.WriteLine("----------------------------------------------------");
         }
 
-        public double CalculatePrice(double price)
+        public void CalculatePrice(double price)
         {
             double totalPrice = 0;
             double totalDuration = 0;
@@ -218,7 +211,8 @@
 
             totalPrice = totalDuration * price;
 
-            return totalPrice;
+            Console.WriteLine("Total Price for the calls: {0:F2}BGN", totalPrice);
+            Console.WriteLine("----------------------------------------------------");
         }
     }
 

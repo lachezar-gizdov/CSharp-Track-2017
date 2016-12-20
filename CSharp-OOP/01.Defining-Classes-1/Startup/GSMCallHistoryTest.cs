@@ -13,6 +13,16 @@ namespace Startup
             Nexus.AddCall(new Call("20.12.2016", "20:00", 7777345, 200));
 
             Nexus.DisplayCallHistory();
+
+            Nexus.CalculatePrice(0.37);
+
+            
+
+            Nexus.ClearCallHistory();
+
+            Nexus.DisplayCallHistory();
+
+
         }
     }
 }
