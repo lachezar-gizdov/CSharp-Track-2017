@@ -43,7 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Distance.cs" />
+    <Compile Include="GenericListT.cs" />
+    <Compile Include="Path.cs" />
+    <Compile Include="PathStorage.cs" />
+    <Compile Include="Point3D.cs" />
+    <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

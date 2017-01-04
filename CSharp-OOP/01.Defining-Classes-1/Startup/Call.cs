@@ -69,7 +69,7 @@
                 Console.Write("Date = {0} | ", Date);
                 Console.Write("Time = {0} | ", Time);
                 Console.Write("Called Number = {0} | ", CalledNumber);
-                Console.WriteLine("Duration = {0}", CallDuration);
+                Console.WriteLine("Duration = {0} Seconds", CallDuration);
         }
 
         public static void CalculatePrice(double price)
