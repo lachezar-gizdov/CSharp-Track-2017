@@ -1,16 +1,30 @@
 ﻿namespace Points
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
 
-    class PathStorage
+    public class PathStorage
     {
-        public static void StorePoints()
+        public static void StorePoints(Path paths)
         {
-            using (StreamWriter stream = new StreamWriter("paths.txt"))
+            using (StreamWriter writer = new StreamWriter("/Paths/points.txt", true))
             {
-                stream.WriteLine();
+                foreach (var item in paths)
+                {
+                    writer.WriteLine(item);
+                }
             }
+        }
+
+        public static IEnumerable<string> LoadPaths()
+        {
+            List<string> paths = new List<string>();
+            using (StreamReader reader = new StreamReader("/Paths/points.txt", true))
+            {
+                paths.AddRange(reader.ReadToEnd().Trim().Split(new[] { '\n', '\r' }));
+            }
+            return paths;
         }
     }
 }

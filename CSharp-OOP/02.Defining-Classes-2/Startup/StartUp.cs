@@ -33,6 +33,18 @@
             list.ClearList();
             Console.WriteLine("Clearing the generic list");
             Console.WriteLine(list.ToString());
+
+            GenericList<string> list2 = new GenericList<string>(3);
+
+            list2.AddElement("Audi");
+            list2.AddElement("a4");
+            list2.AddElement("1.8T");
+
+            Console.Write("Finding the maximum element: ");
+            Console.WriteLine(list2.MaxElement());
+
+            Console.Write("Finding the minimum element: ");
+            Console.WriteLine(list2.MinElement());
         }
     }
 }

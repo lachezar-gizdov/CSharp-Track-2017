@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Points
 {
-    class GenericList<T>
+    public class GenericList<T> where T : IComparable
     {
         //fields
         private T[] elements;
@@ -77,8 +78,13 @@ namespace Points
         }
         public T MinElement()
         {
-
-            return
+            var min = this.elements.Min();
+            return min;
+        }
+        public T MaxElement()
+        {
+            var max = this.elements.Max();
+            return max;
         }
         public override string ToString()
         {

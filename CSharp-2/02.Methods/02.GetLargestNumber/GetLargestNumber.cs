@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Linq;
 
-class GetLargestNumber
+public class GetLargestNumber
 {
     static void Main()
     {
         int[] nums = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
 
-        Console.WriteLine(GetMax(nums));
+        var largest = new GetLargestNumber();
+
+        var result = largest.GetMax(nums);
+
+        Console.WriteLine(result);
     }
 
-    static int GetMax(int[] nums)
+    public int GetMax(int[] nums)
     {
         int max = int.MinValue;
 
