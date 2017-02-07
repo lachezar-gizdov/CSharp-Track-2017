@@ -111,6 +111,28 @@
             var model = (Car)this.GetModel(() => this.controller.Sort(null));
         }
 
+        [TestMethod]
+        public void CheckIfAddingMethodIsSettingPropertiesCorrectly()
+        {
+            //Assign
+            var car = new Car
+            {
+                Id = 10,
+                Make = "Audi",
+                Model = "A4",
+                Year = 1999
+            };
+
+            //Act
+            carsData.Add(car);
+
+            //Assert
+            Assert.AreEqual(10, car.Id);
+            Assert.AreEqual("Audi", car.Make);
+            Assert.AreEqual("A4", car.Model);
+            Assert.AreEqual(1999, car.Year);
+        }
+
         private object GetModel(Func<IView> funcView)
         {
             var view = funcView();
