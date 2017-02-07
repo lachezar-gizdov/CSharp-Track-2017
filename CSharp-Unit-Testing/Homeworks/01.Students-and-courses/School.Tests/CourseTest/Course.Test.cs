@@ -56,8 +56,8 @@
         public void CheckIfStudentWithTheSameIDCanBeAdded()
         {
             IList<IStudent> students = new List<IStudent>();
-            Student go6o = new Student("go6o", 10005);
-            Student pesho = new Student("pesho", 10005);
+            Student go6o = new Student("Go6o", 10005);
+            Student pesho = new Student("Pesho", 10005);
 
             students.Add(go6o);
             students.Add(pesho);
