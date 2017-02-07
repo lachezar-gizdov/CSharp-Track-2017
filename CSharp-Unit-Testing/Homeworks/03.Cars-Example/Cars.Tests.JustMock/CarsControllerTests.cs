@@ -9,7 +9,7 @@
     using Cars.Tests.JustMock.Mocks;
     using Cars.Controllers;
     using Cars.Models;
-    
+
     [TestClass]
     public class CarsControllerTests
     {
@@ -102,6 +102,13 @@
         public void SortingCarsShouldThrowArgumentExceptionIfPassedParameterIsNotCorrect()
         {
             var model = (Car)this.GetModel(() => this.controller.Sort("someParameter"));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void SortingCarsShouldThrowArgumentExceptionIfPassedParameterIsNull()
+        {
+            var model = (Car)this.GetModel(() => this.controller.Sort(null));
         }
 
         private object GetModel(Func<IView> funcView)
