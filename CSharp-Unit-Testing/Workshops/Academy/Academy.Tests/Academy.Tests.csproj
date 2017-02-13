@@ -63,7 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\CourseTests.cs" />
-    <Compile Include="Models\Fakes\UserFake.cs" />
+    <Compile Include="Models\Mocks\UserMock.cs" />
     <Compile Include="Models\SeasonTests.cs" />
     <Compile Include="Models\UserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

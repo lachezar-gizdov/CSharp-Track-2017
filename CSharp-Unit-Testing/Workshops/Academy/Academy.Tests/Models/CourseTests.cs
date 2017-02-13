@@ -1,7 +1,7 @@
 ﻿using Academy.Models;
-using Academy.Tests.Models.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 using Telerik.JustMock;
 
 namespace Academy.Tests.Models
@@ -12,42 +12,42 @@ namespace Academy.Tests.Models
         [TestMethod]
         public void ShouldAssignNamePropertyCorrectly()
         {
-            //Assign
+            //Assign & Act
             var name = "Name";
             int lectures = 4;
             var startDate = new DateTime(2017, 2, 7);
             var endDate = new DateTime(2017, 2, 9);
             var course = new Course(name, lectures, startDate, endDate);
 
-            //Act & Assert
+            //Assert
             Assert.AreEqual(name, course.Name);
         }
 
         [TestMethod]
         public void ShouldAssignLecturesPropertyCorrectly()
         {
-            //Assign
+            //Assign & Act
             var name = "Name";
             int lectures = 4;
             var startDate = new DateTime(2017, 2, 7);
             var endDate = new DateTime(2017, 2, 9);
             var course = new Course(name, lectures, startDate, endDate);
 
-            //Act & Assert
+            //Assert
             Assert.AreEqual(lectures, course.LecturesPerWeek);
         }
 
         [TestMethod]
         public void ShouldAssignStartingDatePropertyCorrectly()
         {
-            //Assign
+            //Assign & Act
             var name = "Name";
             int lectures = 4;
             var startDate = new DateTime(2017, 2, 7);
             var endDate = new DateTime(2017, 2, 9);
             var course = new Course(name, lectures, startDate, endDate);
 
-            //Act & Assert
+            //Assert
             Assert.AreEqual(startDate, course.StartingDate);
         }
 
@@ -183,7 +183,7 @@ namespace Academy.Tests.Models
             var course = new Course(name, lectures, startDate, endDate);
 
             //Act & Assert
-            Assert.IsTrue(course.ToString().Contains("  * There are no lectures in this course!"));
+            Assert.IsTrue(course.ToString().Contains("no lectures"));
         }
     }
 }

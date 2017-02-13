@@ -9,20 +9,18 @@ namespace Academy.Tests.Models
     [TestClass]
     public class SeasonTests
     {
-        [Ignore]
         [TestMethod]
         public void ListUsersExpectToIterateTrainerCollection()
         {
             // Arrange
             var sut = new Season(2016, 2017, Initiative.SoftwareAcademy);
-            var trainerMock = Mock.Create<IStudent>();
-
+            var trainerMock = Mock.Create<Student>();
 
             sut.Students.Add(trainerMock);
-            Mock.Arrange(() => trainerMock.ToString()).DoNothing();
+            Mock.Arrange(() => trainerMock.ToString());
 
             // Act
-            var result = sut.ListUsers();
+            sut.ListUsers();
 
             // Assert
             Mock.Assert(() => trainerMock.ToString(), Occurs.Once());
