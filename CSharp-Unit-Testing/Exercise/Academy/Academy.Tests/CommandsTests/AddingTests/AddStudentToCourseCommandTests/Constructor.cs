@@ -1,4 +1,4 @@
-﻿namespace Academy.Tests.CommandsTests.AddingTests.AddStudentToSeasonCommandTests
+﻿namespace Academy.Tests.CommandsTests.AddingTests.AddStudentToCourseCommandTests
 {
     using Academy.Commands.Adding;
     using Academy.Core.Contracts;
@@ -17,7 +17,7 @@
             var engineMock = Mock.Create<IEngine>();
 
             //Act & Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new AddStudentToSeasonCommand(null, engineMock));
+            Assert.ThrowsException<ArgumentNullException>(() => new AddStudentToCourseCommand(null, engineMock));
         }
 
         [TestMethod]
@@ -27,7 +27,7 @@
             var factoryMock = Mock.Create<IAcademyFactory>();
 
             //Act & Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new AddStudentToSeasonCommand(factoryMock, null));
+            Assert.ThrowsException<ArgumentNullException>(() => new AddStudentToCourseCommand(factoryMock, null));
         }
 
         [TestMethod]
@@ -38,7 +38,7 @@
             var factoryMock = Mock.Create<IAcademyFactory>();
 
             //Act
-            var command = new AddStudentToSeasonCommandMock(factoryMock, engineMock);
+            var command = new AddStudentToCourseCommandMock(factoryMock, engineMock);
 
             //Assert
             Assert.AreEqual(engineMock, command.Engine);
@@ -52,7 +52,7 @@
             var factoryMock = Mock.Create<IAcademyFactory>();
 
             //Act
-            var command = new AddStudentToSeasonCommandMock(factoryMock, engineMock);
+            var command = new AddStudentToCourseCommandMock(factoryMock, engineMock);
 
             //Assert
             Assert.AreEqual(factoryMock, command.AcademyFactory);

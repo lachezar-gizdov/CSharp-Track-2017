@@ -23,8 +23,8 @@
             var seasonMock = Mock.Create<ISeason>();
 
             Mock.Arrange(() => studentMock.Username).Returns("Pesho");
-            Mock.Arrange(() => engineMock.Students).Returns(new List<IStudent>() { studentMock });
             Mock.Arrange(() => seasonMock.Students).Returns(new List<IStudent>() { new Student("Pesho", Track.Dev) });
+            Mock.Arrange(() => engineMock.Students).Returns(new List<IStudent>() { studentMock });
             Mock.Arrange(() => engineMock.Seasons).Returns(new List<ISeason>() { seasonMock });
 
             var command = new AddStudentToSeasonCommand(factoryMock, engineMock);
@@ -50,6 +50,30 @@
 
             //Assert
             Assert.AreEqual(1, seasonMock.Students.Count);
+        }
+
+        [TestMethod]
+        public void ShouldReturnSuccessfulMessageWhenStudentIsAdded()
+        {
+            //Arrange
+            var engineMock = Mock.Create<IEngine>();
+            var factoryMock = Mock.Create<IAcademyFactory>();
+            var studentMock = Mock.Create<IStudent>();
+            var seasonMock = Mock.Create<ISeason>();
+
+            Mock.Arrange(() => studentMock.Username).Returns("Pesho");
+            Mock.Arrange(() => seasonMock.Students).Returns(new List<IStudent>());
+            Mock.Arrange(() => engineMock.Students).Returns(new List<IStudent>() { studentMock });
+            Mock.Arrange(() => engineMock.Seasons) .Returns(new List<ISeason>() { seasonMock });
+
+            var command = new AddStudentToSeasonCommand(factoryMock, engineMock);
+
+            //Act
+            var result = command.Execute(new List<string>() { "Pesho", "0" });
+
+            //Assert
+            StringAssert.Contains(result, "Pesho");
+            StringAssert.Contains(result, "0");
         }
     }
 }

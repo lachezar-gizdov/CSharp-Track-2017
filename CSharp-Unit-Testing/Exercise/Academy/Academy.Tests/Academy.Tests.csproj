@@ -56,8 +56,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandsTests\AddingTests\AddStudentToCourseCommandTests\Constructor.cs" />
+    <Compile Include="CommandsTests\AddingTests\AddStudentToCourseCommandTests\Execute.cs" />
     <Compile Include="CommandsTests\AddingTests\AddStudentToSeasonCommandTests\Constructor.cs" />
     <Compile Include="CommandsTests\AddingTests\AddStudentToSeasonCommandTests\Execute.cs" />
+    <Compile Include="CommandsTests\Mocks\AddStudentToCourseCommandMock.cs" />
     <Compile Include="CommandsTests\Mocks\AddStudentToSeasonCommandMock.cs" />
     <Compile Include="CoreTests\FactoriesTests\AcademyFactoryTests\CreateLectureResource.cs" />
     <Compile Include="Fakes\UserFake.cs" />
