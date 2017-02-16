@@ -113,40 +113,35 @@
         [TestMethod]
         public void ThrowLocationNotFoundExceptionWhenTargetGalaxyisNotFoundInTeleportStationLocationsList()
         {
-            ////Arrange
-            //string planetName = "Earth";
-            //string galaxyName = "MilkyWay";
+            //Arrange
+            string planetName = "Earth";
+            string galaxyName = "MilkyWay";
 
-            //var ownerMock = Mock.Create<IBusinessOwner>();
+            var ownerMock = Mock.Create<IBusinessOwner>();
 
-            //var teleportlocationMock = Mock.Create<ILocation>();
-            //Mock.Arrange(() => teleportlocationMock.Planet.Name).Returns(planetName);
-            //Mock.Arrange(() => teleportlocationMock.Planet.Galaxy.Name).Returns(galaxyName);
+            var teleportlocationMock = Mock.Create<ILocation>();
+            Mock.Arrange(() => teleportlocationMock.Planet.Name).Returns(planetName);
+            Mock.Arrange(() => teleportlocationMock.Planet.Galaxy.Name).Returns(galaxyName);
 
-            //var unitToTeleportMock = Mock.Create<IUnit>();
-            //Mock.Arrange(() => planetUnitMock.CurrentLocation.Planet.Name).Returns(planetName);
-            //Mock.Arrange(() => planetUnitMock.CurrentLocation.Planet.Galaxy.Name).Returns(galaxyName);
+            var unitToTeleportMock = Mock.Create<IUnit>();
+            Mock.Arrange(() => unitToTeleportMock.CurrentLocation.Planet.Name).Returns(planetName);
+            Mock.Arrange(() => unitToTeleportMock.CurrentLocation.Planet.Galaxy.Name).Returns(galaxyName);
 
+            var pathMock = Mock.Create<IPath>();
+            Mock.Arrange(() => pathMock.TargetLocation.Planet.Name).Returns(planetName);
+            Mock.Arrange(() => pathMock.TargetLocation.Planet.Galaxy.Name).Returns(galaxyName);
+            Mock.Arrange(() => pathMock.Cost.GoldCoins).Returns(10);
+            Mock.Arrange(() => pathMock.Cost.SilverCoins).Returns(10);
+            Mock.Arrange(() => pathMock.Cost.BronzeCoins).Returns(10);
+            Mock.Arrange(() => pathMock.TargetLocation.Planet.Galaxy.Name).Returns("");
 
-            //var planetUnitsList = new List<IUnit>() { planetUnitMock };
+            var map = new List<IPath>() { pathMock };
 
-            //var pathMock = Mock.Create<IPath>();
-            //Mock.Arrange(() => pathMock.TargetLocation.Planet.Name).Returns(planetName);
-            //Mock.Arrange(() => pathMock.TargetLocation.Planet.Galaxy.Name).Returns(galaxyName);
-            //Mock.Arrange(() => pathMock.Cost.GoldCoins).Returns(10);
-            //Mock.Arrange(() => pathMock.Cost.SilverCoins).Returns(10);
-            //Mock.Arrange(() => pathMock.Cost.BronzeCoins).Returns(10);
-            //Mock.Arrange(() => pathMock.TargetLocation.Planet.Units).Returns(planetUnitsList);
+            var sut = new TeleportationStationFake(ownerMock, map, teleportlocationMock);
 
-            //var map = new List<IPath>() { pathMock };
-
-            //var sut = new TeleportationStationFake(ownerMock, map, teleportlocationMock);
-
-            //var targetLocationMock = Mock.Create<ILocation>();
-            //Mock.Arrange(() => targetLocationMock.Coordinates.Latitude).Returns(latitude);
-            //Mock.Arrange(() => targetLocationMock.Coordinates.Longtitude).Returns(longitude);
-            //Mock.Arrange(() => targetLocationMock.Planet.Name).Returns(planetName);
-            //Mock.Arrange(() => targetLocationMock.Planet.Galaxy.Name).Returns(galaxyName);
+            var targetLocationMock = Mock.Create<ILocation>();
+            Mock.Arrange(() => targetLocationMock.Planet.Name).Returns(planetName);
+            Mock.Arrange(() => targetLocationMock.Planet.Galaxy.Name).Returns(galaxyName);
         }
     }
 }
