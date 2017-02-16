@@ -1,7 +1,8 @@
 ﻿namespace IntergalacticTravel.Tests.TeleportStationTests
 {
-    using IntergalacticTravel.Contracts;
+    using Contracts;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Mocks;
     using System.Collections.Generic;
     using Telerik.JustMock;
 
@@ -14,15 +15,37 @@
             //Arrange
             var ownerMock = Mock.Create<IBusinessOwner>();
             var locationMock = Mock.Create<ILocation>();
-            var map = new List<IPath>();
-            var sut = new TeleportStation(ownerMock, map, locationMock);
+            var mapMock = Mock.Create<IEnumerable<IPath>>();
+            var sut = new TeleportationStationFake(ownerMock, mapMock, locationMock);
 
             //Act & Assert
-            Assert.IsNotNull(sut.)
+            Assert.AreSame(ownerMock, sut.Owner);
+        }
+
+        [TestMethod]
+        public void AssignMapProperlyWhenPassedParametersAreCorrect()
+        {
+            //Arrange
+            var ownerMock = Mock.Create<IBusinessOwner>();
+            var locationMock = Mock.Create<ILocation>();
+            var mapMock = Mock.Create<IEnumerable<IPath>>();
+            var sut = new TeleportationStationFake(ownerMock, mapMock, locationMock);
+
+            //Act & Assert
+            Assert.AreSame(mapMock, sut.GalacticMap);
+        }
+
+        [TestMethod]
+        public void AssignLocationProperlyWhenPassedParametersAreCorrect()
+        {
+            //Arrange
+            var ownerMock = Mock.Create<IBusinessOwner>();
+            var locationMock = Mock.Create<ILocation>();
+            var mapMock = Mock.Create<IEnumerable<IPath>>();
+            var sut = new TeleportationStationFake(ownerMock, mapMock, locationMock);
+
+            //Act & Assert
+            Assert.AreSame(locationMock, sut.Location);
         }
     }
 }
-
-//this.owner = owner;
-//this.galacticMap = galacticMap;
-//this.location = location;

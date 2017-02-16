@@ -76,7 +76,7 @@ namespace IntergalacticTravel
 
         private void ValidateThatTeleportationServiceIsApplicable(IUnit unitToTeleport, ILocation targetLocation, out IPath pathToTheTargetPlanet)
         {
-            if (unitToTeleport.IsNull())
+            if (unitToTeleport.IsNull())    
             {
                 throw new ArgumentNullException("unitToTeleport");
             }
