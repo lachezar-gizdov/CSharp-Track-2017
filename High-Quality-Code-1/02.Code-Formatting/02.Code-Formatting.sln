@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormattingCSharp", "FormattingCSharp\FormattingCSharp.csproj", "{27DFD52D-F28F-45D6-BEC4-838E88044F75}"
+EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "FormattingJS", "FormattingJS\FormattingJS.njsproj", "{8235C407-EA1F-4865-BA1A-3DA3D40DE029}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormattingCSharp2", "FormattingCSharp-2\FormattingCSharp2.csproj", "{130BD609-C93B-4512-8B99-FD20D7B121E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27DFD52D-F28F-45D6-BEC4-838E88044F75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27DFD52D-F28F-45D6-BEC4-838E88044F75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27DFD52D-F28F-45D6-BEC4-838E88044F75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27DFD52D-F28F-45D6-BEC4-838E88044F75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8235C407-EA1F-4865-BA1A-3DA3D40DE029}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8235C407-EA1F-4865-BA1A-3DA3D40DE029}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8235C407-EA1F-4865-BA1A-3DA3D40DE029}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8235C407-EA1F-4865-BA1A-3DA3D40DE029}.Release|Any CPU.Build.0 = Release|Any CPU
+		{130BD609-C93B-4512-8B99-FD20D7B121E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{130BD609-C93B-4512-8B99-FD20D7B121E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{130BD609-C93B-4512-8B99-FD20D7B121E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{130BD609-C93B-4512-8B99-FD20D7B121E1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

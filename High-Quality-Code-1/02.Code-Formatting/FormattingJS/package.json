@@ -1,0 +1,9 @@
+{
+  "name": "formatting-js",
+  "version": "0.0.0",
+  "description": "FormattingJS",
+  "main": "app.js",
+  "author": {
+    "name": "olebg"
+  }
+}
