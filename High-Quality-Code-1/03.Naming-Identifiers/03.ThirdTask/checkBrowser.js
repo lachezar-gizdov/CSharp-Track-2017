@@ -1,9 +1,9 @@
-﻿function _ClickON_TheButton(THE_event, args) {
-    var myWindow = window,
+﻿function buttonClock(event, args) {
+    let myWindow = window,
         browser = myWindow.navigator.appCodeName,
-        isMyBrowser = browser == "Mozilla";
+        isMyBrowserMozzila = browser === "Mozilla";
 
-    if (isMyBrowser) {
+    if (isMyBrowserMozzila) {
         alert("Yes");
     } else {
         alert("No");

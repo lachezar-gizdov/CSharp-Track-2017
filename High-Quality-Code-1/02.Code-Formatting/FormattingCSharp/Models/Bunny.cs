@@ -1,16 +1,19 @@
 ﻿namespace FormattingCSharp.Models
 {
-    using Contracts;
-    using Enums;
     using System;
     using System.Text;
+    using Contracts;
+    using Enums;
 
     [Serializable]
     public class Bunny
     {
         public int Age { get; set; }
+
         public string Name { get; set; }
+
         public FurType FurType { get; set; }
+
         public void Introduce(IWriter writer)
         {
             writer.WriteLine($"{this.Name} - \"I am {this.Age} years old!\"");

@@ -1,9 +1,8 @@
-﻿
-namespace FormattingCSharp2.Models
+﻿namespace FormattingCSharp2.Models
 {
     using System.Text;
 
-    static class Messages
+    public static class Messages
     {
         public static StringBuilder Output { get; private set; }
 
@@ -11,6 +10,7 @@ namespace FormattingCSharp2.Models
         {
             Output.Append("Event added\n");
         }
+
         public static void EventDeleted(int x)
         {
             if (x == 0)

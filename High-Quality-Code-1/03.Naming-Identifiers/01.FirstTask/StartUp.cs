@@ -1,4 +1,4 @@
-﻿namespace FirstTask
+﻿namespace Messages
 {
     using Engine;
 
@@ -6,8 +6,8 @@
     {
         public static void Main()
         {
-            Variable variable = new Variable();
-            variable.Print(true);
+            Message message = new Message();
+            message.Check(true);
         }
     }
 }

@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.FirstTask", "01.FirstTask\01.FirstTask.csproj", "{2E688795-F4BC-4A77-8AE3-D0986F028DD9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messages", "01.FirstTask\Messages.csproj", "{2E688795-F4BC-4A77-8AE3-D0986F028DD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.SecondTask", "02.SecondTask\02.SecondTask.csproj", "{C960CC64-81F2-4B83-AA4D-E24E6E1EB8D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Humans", "02.SecondTask\Humans.csproj", "{C960CC64-81F2-4B83-AA4D-E24E6E1EB8D9}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "03.ThirdTask", "03.ThirdTask\03.ThirdTask.njsproj", "{85D9F98F-A40E-4B99-98B5-42ACA0D984C7}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "JSBrowserCheck", "03.ThirdTask\JSBrowserCheck.njsproj", "{85D9F98F-A40E-4B99-98B5-42ACA0D984C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.FourthTask", "04.FourthTask\04.FourthTask.csproj", "{3AD8DC13-8356-4320-ADF6-77D481A760FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MineSweeper", "04.FourthTask\MineSweeper.csproj", "{3AD8DC13-8356-4320-ADF6-77D481A760FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

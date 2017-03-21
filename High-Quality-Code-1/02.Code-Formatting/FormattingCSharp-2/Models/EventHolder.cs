@@ -5,14 +5,14 @@
 
     public class EventHolder
     {
-        MultiDictionary<string, Event> byTitle = new MultiDictionary<string, Event>(true);
-        OrderedBag<Event> byDate = new OrderedBag<Event>();
+        private MultiDictionary<string, Event> byTitle = new MultiDictionary<string, Event>(true);
+        private OrderedBag<Event> byDate = new OrderedBag<Event>();
 
         public void AddEvent(DateTime date, string title, string location)
         {
             Event newEvent = new Event(date, title, location);
-            byTitle.Add(title.ToLower(), newEvent);
-            byDate.Add(newEvent);
+            this.byTitle.Add(title.ToLower(), newEvent);
+            this.byDate.Add(newEvent);
             Messages.EventAdded();
         }
 
@@ -21,18 +21,19 @@
             string title = titleToDelete.ToLower();
             int removed = 0;
 
-            foreach (var eventToRemove in byTitle[title])
+            foreach (var eventToRemove in this.byTitle[title])
             {
                 removed++;
-                byDate.Remove(eventToRemove);
+                this.byDate.Remove(eventToRemove);
             }
 
-            byTitle.Remove(title);
+            this.byTitle.Remove(title);
             Messages.EventDeleted(removed);
         }
+
         public void ListEvents(DateTime date, int count)
         {
-            OrderedBag<Event>.View eventsToShow = byDate.RangeFrom(new Event(date, "", ""), true);
+            OrderedBag<Event>.View eventsToShow = this.byDate.RangeFrom(new Event(date, string.Empty, string.Empty), true);
             int showed = 0;
 
             foreach (var eventToShow in eventsToShow)

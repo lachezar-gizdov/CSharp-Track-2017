@@ -6,14 +6,12 @@
 
     public class StartUp
     {
-
-
-        static void Main()
+        public static void Main()
         {
             while (Engine.ExecuteNextCommand())
             {
-
             }
+
             Console.WriteLine(Messages.Output);
         }
     }

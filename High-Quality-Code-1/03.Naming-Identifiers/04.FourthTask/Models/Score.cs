@@ -1,19 +1,32 @@
 ﻿namespace Minesweeper.Models
 {
-    public class Score
+    using MineSweeper.Contracts;
+
+    public class Score : IScore
     {
         private string name;
         private int points;
+
+        public Score()
+        {
+        }
+
+        public Score(string name, int points)
+        {
+            this.name = name;
+            this.points = points;
+        }
 
         public string Name
         {
             get
             {
-                return name;
+                return this.name;
             }
+
             set
             {
-                name = value;
+                this.name = value;
             }
         }
 
@@ -21,20 +34,13 @@
         {
             get
             {
-                return points;
+                return this.points;
             }
+
             set
             {
-                points = value;
+                this.points = value;
             }
-        }
-
-        public Score() { }
-
-        public Score(string name, int points)
-        {
-            this.name = name;
-            this.points = points;
         }
     }
 }

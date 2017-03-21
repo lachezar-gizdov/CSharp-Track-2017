@@ -5,16 +5,22 @@
 
     public class Event : IComparable
     {
-        public DateTime date;
-        public string title;
-        public string location;
+        private DateTime date;
+        private string title;
+        private string location;
 
-        public Event(DateTime date, String title, String location)
+        public Event(DateTime date, string title, string location)
         {
             this.date = date;
             this.title = title;
             this.location = location;
         }
+
+        public DateTime Date { get; set; }
+
+        public string Title { get; set; }
+
+        public string Location { get; set; }
 
         public int CompareTo(object obj)
         {
@@ -26,7 +32,9 @@
             if (byDate == 0)
             {
                 if (byTitle == 0)
+                {
                     return byLocation;
+                }
                 else
                 {
                     return byTitle;
@@ -42,12 +50,12 @@
         {
             StringBuilder toString = new StringBuilder();
 
-            toString.Append(date.ToString("yyyy-MM-ddTHH:mm:ss"));
-            toString.Append(" | " + title);
+            toString.Append(this.date.ToString("yyyy-MM-ddTHH:mm:ss"));
+            toString.Append(" | " + this.title);
 
-            if (location != null && location != "")
+            if (this.location != null && this.location != string.Empty)
             {
-                toString.Append(" | " + location);
+                toString.Append(" | " + this.location);
             }
 
             return toString.ToString();

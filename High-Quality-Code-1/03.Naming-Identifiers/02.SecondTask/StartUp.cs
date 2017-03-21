@@ -1,29 +1,15 @@
 ﻿namespace SecondTask
 {
+    using System;
+    using Humans.Models;
+
     public class StartUp
     {
-        public enum Gender { ultraBadka, CoolChick };
-        public class Human
+        public static void Main()
         {
-            public Gender Sex { get; set; }
-            public string HumanName { get; set; }
-            public int Age { get; set; }
-        }
-        public void Create(int magicNumber)
-        {
-            Human newHuman = new Human();
-            newHuman.Age = magicNumber;
+            var human = new Human().Create(18);
 
-            if (magicNumber % 2 == 0)
-            {
-                newHuman.HumanName = "Батката";
-                newHuman.Sex = Gender.ultraBadka;
-            }
-            else
-            {
-                newHuman.HumanName = "Мацето";
-                newHuman.Sex = Gender.CoolChick;
-            }
+            Console.WriteLine($"Name: {human.Name}, Age: {human.Age}, Gender: {human.Sex}");
         }
     }
 }

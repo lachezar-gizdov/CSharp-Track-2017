@@ -1,34 +1,35 @@
 ﻿namespace Games
 {
-    using Minesweeper.Models;
     using System;
     using System.Collections.Generic;
+    using Minesweeper.Models;
 
     public class MineSweeper
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            const int Max = 35;
+
             string command = string.Empty;
-            char[,] field = createPlayingField();
-            char[,] bombs = placeBombs();
+            char[,] field = CreatePlayingField();
+            char[,] bombs = PlaceBombs();
             int counter = 0;
             bool bang = false;
             List<Score> champions = new List<Score>(6);
             int row = 0;
             int colomn = 0;
-            bool flag = true;
-            const int max = 35;
-            bool flag2 = false;
+            bool startGame = true;
+            bool winGame = false;
 
             do
             {
-                if (flag)
+                if (startGame)
                 {
                     Console.WriteLine("Let's play Minesweeper! Try to avoid the mines!");
                     Console.WriteLine("Commands during the game: 'top' - show the current Scoreboard, 'restart' - start a new game, 'exit' - to exit the game.");
 
-                    dumpp(field);
-                    flag = false;
+                    ShowPlayingField(field);
+                    startGame = false;
                 }
 
                 Console.Write("Enter row and colomn separated by a signle space : ");
@@ -50,11 +51,11 @@
                         ScoreBoard(champions);
                         break;
                     case "restart":
-                        field = createPlayingField();
-                        bombs = placeBombs();
-                        dumpp(field);
+                        field = CreatePlayingField();
+                        bombs = PlaceBombs();
+                        ShowPlayingField(field);
                         bang = false;
-                        flag = false;
+                        startGame = false;
                         break;
                     case "exit":
                         Console.WriteLine("Bye!");
@@ -64,22 +65,24 @@
                         {
                             if (bombs[row, colomn] == '-')
                             {
-                                tisinahod(field, bombs, row, colomn);
+                                NextMove(field, bombs, row, colomn);
                                 counter++;
                             }
-                            if (max == counter)
+
+                            if (Max == counter)
                             {
-                                flag2 = true;
+                                winGame = true;
                             }
                             else
                             {
-                                dumpp(field);
+                                ShowPlayingField(field);
                             }
                         }
                         else
                         {
                             bang = true;
                         }
+
                         break;
                     default:
                         Console.WriteLine();
@@ -91,7 +94,7 @@
 
                 if (bang)
                 {
-                    dumpp(bombs);
+                    ShowPlayingField(bombs);
                     Console.WriteLine();
                     Console.Write("Ouch! You hit a mine. Score: {0}. Enter your nickname: ", counter);
 
@@ -114,36 +117,36 @@
                             }
                         }
                     }
+
                     champions.Sort((Score firstPlayer, Score secondPlayer) => secondPlayer.Name.CompareTo(firstPlayer.Name));
                     champions.Sort((Score firstPlayer, Score secondPlayer) => secondPlayer.Points.CompareTo(firstPlayer.Points));
                     ScoreBoard(champions);
 
-                    field = createPlayingField();
-                    bombs = placeBombs();
+                    field = CreatePlayingField();
+                    bombs = PlaceBombs();
                     counter = 0;
                     bang = false;
-                    flag = true;
+                    startGame = true;
                 }
 
-                if (flag2)
+                if (winGame)
                 {
                     Console.WriteLine();
                     Console.WriteLine("Nice job! You opened 35 cells without hitting a mine!");
 
-                    dumpp(bombs);
+                    ShowPlayingField(bombs);
                     Console.WriteLine("Enter your nickname: ");
                     string name = Console.ReadLine();
                     Score score = new Score(name, counter);
                     champions.Add(score);
                     ScoreBoard(champions);
-                    field = createPlayingField();
-                    bombs = placeBombs();
+                    field = CreatePlayingField();
+                    bombs = PlaceBombs();
                     counter = 0;
-                    flag2 = false;
-                    flag = true;
+                    winGame = false;
+                    startGame = true;
                 }
             }
-
             while (command != "exit");
 
             Console.Read();
@@ -158,6 +161,7 @@
                 {
                     Console.WriteLine("{0}. {1} --> {2} cells", i + 1, score[i].Name, score[i].Points);
                 }
+
                 Console.WriteLine();
             }
             else
@@ -166,14 +170,14 @@
             }
         }
 
-        private static void tisinahod(char[,] board, char[,] binbs, int row, int colomn)
+        private static void NextMove(char[,] board, char[,] binbs, int row, int colomn)
         {
             char colkobinbs = Move(binbs, row, colomn);
             binbs[row, colomn] = colkobinbs;
             board[row, colomn] = colkobinbs;
         }
 
-        private static void dumpp(char[,] board)
+        private static void ShowPlayingField(char[,] board)
         {
             int row = board.GetLength(0);
             int col = board.GetLength(1);
@@ -186,13 +190,15 @@
                 {
                     Console.Write(string.Format("{0} ", board[i, j]));
                 }
+
                 Console.Write("|");
                 Console.WriteLine();
             }
+
             Console.WriteLine("   ---------------------\n");
         }
 
-        private static char[,] createPlayingField()
+        private static char[,] CreatePlayingField()
         {
             int boardRows = 5;
             int boardColumns = 10;
@@ -208,7 +214,7 @@
             return board;
         }
 
-        private static char[,] placeBombs()
+        private static char[,] PlaceBombs()
         {
             int rows = 5;
             int cols = 10;
@@ -235,8 +241,8 @@
 
             foreach (int bomb in bombs)
             {
-                int col = (bomb / cols);
-                int row = (bomb % cols);
+                int col = bomb / cols;
+                int row = bomb % cols;
                 if (row == 0 && bomb != 0)
                 {
                     col--;
@@ -246,6 +252,7 @@
                 {
                     row++;
                 }
+
                 playField[col, row - 1] = '*';
             }
 
@@ -283,6 +290,7 @@
                     counter++;
                 }
             }
+
             if (row + 1 < rows)
             {
                 if (board[row + 1, col] == '*')
@@ -290,6 +298,7 @@
                     counter++;
                 }
             }
+
             if (col - 1 >= 0)
             {
                 if (board[row, col - 1] == '*')
@@ -297,6 +306,7 @@
                     counter++;
                 }
             }
+
             if (col + 1 < cols)
             {
                 if (board[row, col + 1] == '*')
@@ -304,6 +314,7 @@
                     counter++;
                 }
             }
+
             if ((row - 1 >= 0) && (col - 1 >= 0))
             {
                 if (board[row - 1, col - 1] == '*')
@@ -311,6 +322,7 @@
                     counter++;
                 }
             }
+
             if ((row - 1 >= 0) && (col + 1 < cols))
             {
                 if (board[row - 1, col + 1] == '*')
@@ -318,6 +330,7 @@
                     counter++;
                 }
             }
+
             if ((row + 1 < rows) && (col - 1 >= 0))
             {
                 if (board[row + 1, col - 1] == '*')
@@ -325,6 +338,7 @@
                     counter++;
                 }
             }
+
             if ((row + 1 < rows) && (col + 1 < cols))
             {
                 if (board[row + 1, col + 1] == '*')
@@ -332,6 +346,7 @@
                     counter++;
                 }
             }
+
             return char.Parse(counter.ToString());
         }
     }

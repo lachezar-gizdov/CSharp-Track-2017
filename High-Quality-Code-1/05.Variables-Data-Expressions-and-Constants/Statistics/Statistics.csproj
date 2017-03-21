@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2E688795-F4BC-4A77-8AE3-D0986F028DD9}</ProjectGuid>
+    <ProjectGuid>{3DA3B392-72B5-4E8F-88AF-B30B363A2908}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_01.FirstTask</RootNamespace>
-    <AssemblyName>01.FirstTask</AssemblyName>
+    <RootNamespace>Statistics</RootNamespace>
+    <AssemblyName>Statistics</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,8 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Engine\Variable.cs" />
-    <Compile Include="StartUp.cs" />
+    <Compile Include="Statistics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

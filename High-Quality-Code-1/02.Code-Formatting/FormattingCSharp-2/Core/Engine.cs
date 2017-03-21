@@ -5,7 +5,7 @@
 
     public class Engine
     {
-        static EventHolder events = new EventHolder();
+        private static EventHolder events = new EventHolder();
 
         public static bool ExecuteNextCommand()
         {
@@ -38,7 +38,6 @@
         }
 
         private static void ListEvents(string command)
-
         {
             int pipeIndex = command.IndexOf('|');
             DateTime date = GetDate(command, "ListEvents");
@@ -55,7 +54,9 @@
 
         private static void AddEvent(string command)
         {
-            DateTime date; string title; string location;
+            DateTime date;
+            string title;
+            string location;
             GetParameters(command, "AddEvent", out date, out title, out location);
             events.AddEvent(date, title, location);
         }
@@ -69,7 +70,7 @@
             if (firstPipeIndex == lastPipeIndex)
             {
                 eventTitle = commandForExecution.Substring(firstPipeIndex + 1).Trim();
-                eventLocation = "";
+                eventLocation = string.Empty;
             }
             else
             {

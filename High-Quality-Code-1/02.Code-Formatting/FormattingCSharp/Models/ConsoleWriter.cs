@@ -1,7 +1,7 @@
 ﻿namespace FormattingCSharp.Models
 {
-    using Contracts;
     using System;
+    using Contracts;
 
     public class ConsoleWriter : IWriter
     {
@@ -9,6 +9,7 @@
         {
             Console.Write(message);
         }
+
         public void WriteLine(string message)
         {
             Console.WriteLine(message);
