@@ -6,28 +6,37 @@
     {
         public static void Main()
         {
-            Console.WriteLine(CalcTriangleArea(3, 4, 5));
+            var maxElementInArray = MathOperations.FindMax(5, -1, 3, 2, 14, 2, 3);
+            Console.WriteLine(maxElementInArray);
 
-            Console.WriteLine(NumberToDigit(5));
+            var triangleArea = MathOperations.CalculateTriangleArea(3, 4, 5);
+            Console.WriteLine(triangleArea);
 
-            Console.WriteLine(FindMax(5, -1, 3, 2, 14, 2, 3));
+            var numberInDigits = MathOperations.NumberToDigit(5);
+            Console.WriteLine(numberInDigits);
 
-            PrintAsNumber(1.3, "f");
-            PrintAsNumber(0.75, "%");
-            PrintAsNumber(2.30, "r");
+            double pointX1 = 3;
+            double pointY1 = -1;
+            double pointX2 = 3;
+            double pointY2 = 2.5;
 
-            bool horizontal, vertical;
-            Console.WriteLine(CalcDistance(3, -1, 3, 2.5, out horizontal, out vertical));
-            Console.WriteLine("Horizontal? " + horizontal);
-            Console.WriteLine("Vertical? " + vertical);
+            var distance = MathOperations.CalculateDistance(pointX1, pointY1, pointX2, pointY2);
+            Console.WriteLine(distance);
 
-            Student peter = new Student() { FirstName = "Peter", LastName = "Ivanov" };
-            peter.OtherInfo = "From Sofia, born at 17.03.1992";
+            var horizontal = MathOperations.AreHorizontal(pointY1, pointY2);
+            Console.WriteLine("Horizontal? -> {0}", horizontal);
 
-            Student stella = new Student() { FirstName = "Stella", LastName = "Markova" };
-            stella.OtherInfo = "From Vidin, gamer, high results, born at 03.11.1993";
+            var vertical = MathOperations.AreVertical(pointX1, pointX2);
+            Console.WriteLine("Vertical? -> {0}", vertical);
 
-            Console.WriteLine("{0} older than {1} -> {2}", peter.FirstName, stella.FirstName, peter.IsOlderThan(stella));
+            MathOperations.PrintAsNumber(1.3, NumberFormatTypes.FixedPoint);
+            MathOperations.PrintAsNumber(0.75, NumberFormatTypes.Percent);
+            MathOperations.PrintAsNumber(2.30, NumberFormatTypes.RightAligned);
+
+            Student peter = new Student("Peter", "Ivanov", "Sofia", new DateTime(1992, 3, 17));
+            Student stella = new Student("Stella", "Markova", "Vidin", new DateTime(1993, 3, 11), "gamer, high results");
+
+            Console.WriteLine("Is {0} older than {1} ? -> {2}", peter.FirstName, stella.FirstName, peter.IsOlderThan(stella));
         }
     }
 }

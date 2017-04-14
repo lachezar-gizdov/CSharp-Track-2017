@@ -2,6 +2,7 @@
 {
     public enum Gender
     {
-        ultraBadka, CoolChick
+        ultraBadka,
+        CoolChick
     }
 }

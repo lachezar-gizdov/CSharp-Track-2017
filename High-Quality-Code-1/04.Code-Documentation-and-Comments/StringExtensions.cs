@@ -8,6 +8,7 @@
     using System.Text;
     using System.Text.RegularExpressions;
 
+
     public static class StringExtensions
     {
         public static string ToMd5Hash(this string input)

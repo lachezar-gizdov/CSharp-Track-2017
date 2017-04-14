@@ -12,7 +12,7 @@
 
             string command = string.Empty;
             char[,] field = CreatePlayingField();
-            char[,] bombs = PlaceBombs();
+            char[,] mines = PlaceMines();
             int counter = 0;
             bool bang = false;
             List<Score> champions = new List<Score>(6);
@@ -52,7 +52,7 @@
                         break;
                     case "restart":
                         field = CreatePlayingField();
-                        bombs = PlaceBombs();
+                        mines = PlaceMines();
                         ShowPlayingField(field);
                         bang = false;
                         startGame = false;
@@ -61,11 +61,11 @@
                         Console.WriteLine("Bye!");
                         break;
                     case "turn":
-                        if (bombs[row, colomn] != '*')
+                        if (mines[row, colomn] != '*')
                         {
-                            if (bombs[row, colomn] == '-')
+                            if (mines[row, colomn] == '-')
                             {
-                                NextMove(field, bombs, row, colomn);
+                                NextMove(field, mines, row, colomn);
                                 counter++;
                             }
 
@@ -94,7 +94,7 @@
 
                 if (bang)
                 {
-                    ShowPlayingField(bombs);
+                    ShowPlayingField(mines);
                     Console.WriteLine();
                     Console.Write("Ouch! You hit a mine. Score: {0}. Enter your nickname: ", counter);
 
@@ -123,7 +123,7 @@
                     ScoreBoard(champions);
 
                     field = CreatePlayingField();
-                    bombs = PlaceBombs();
+                    mines = PlaceMines();
                     counter = 0;
                     bang = false;
                     startGame = true;
@@ -134,14 +134,14 @@
                     Console.WriteLine();
                     Console.WriteLine("Nice job! You opened 35 cells without hitting a mine!");
 
-                    ShowPlayingField(bombs);
+                    ShowPlayingField(mines);
                     Console.WriteLine("Enter your nickname: ");
                     string name = Console.ReadLine();
                     Score score = new Score(name, counter);
                     champions.Add(score);
                     ScoreBoard(champions);
                     field = CreatePlayingField();
-                    bombs = PlaceBombs();
+                    mines = PlaceMines();
                     counter = 0;
                     winGame = false;
                     startGame = true;
@@ -214,7 +214,7 @@
             return board;
         }
 
-        private static char[,] PlaceBombs()
+        private static char[,] PlaceMines()
         {
             int rows = 5;
             int cols = 10;
@@ -228,22 +228,22 @@
                 }
             }
 
-            List<int> bombs = new List<int>();
-            while (bombs.Count < 15)
+            List<int> mines = new List<int>();
+            while (mines.Count < 15)
             {
                 Random randomNumber = new Random();
                 int numberToAdd = randomNumber.Next(50);
-                if (!bombs.Contains(numberToAdd))
+                if (!mines.Contains(numberToAdd))
                 {
-                    bombs.Add(numberToAdd);
+                    mines.Add(numberToAdd);
                 }
             }
 
-            foreach (int bomb in bombs)
+            foreach (int mine in mines)
             {
-                int col = bomb / cols;
-                int row = bomb % cols;
-                if (row == 0 && bomb != 0)
+                int col = mine / cols;
+                int row = mine % cols;
+                if (row == 0 && mine != 0)
                 {
                     col--;
                     row = cols;
