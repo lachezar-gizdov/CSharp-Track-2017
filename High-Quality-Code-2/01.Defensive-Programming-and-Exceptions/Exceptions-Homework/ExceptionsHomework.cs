@@ -19,7 +19,7 @@ public class ExceptionsHomework
     {
         if (count > str.Length)
         {
-            return "Invalid count!";
+            throw new ArgumentException("Invalid count!");
         }
 
         StringBuilder result = new StringBuilder();
@@ -37,7 +37,7 @@ public class ExceptionsHomework
         {
             if (number % divisor == 0)
             {
-                throw new Exception("The number is not prime!");
+                throw new ArgumentException("The number is not prime!");
             }
         }
     }
@@ -66,7 +66,7 @@ public class ExceptionsHomework
             CheckPrime(23);
             Console.WriteLine("23 is prime.");
         }
-        catch (Exception)
+        catch (ArgumentException)
         {
             Console.WriteLine("23 is not prime");
         }
@@ -76,7 +76,7 @@ public class ExceptionsHomework
             CheckPrime(33);
             Console.WriteLine("33 is prime.");
         }
-        catch (Exception)
+        catch (ArgumentException)
         {
             Console.WriteLine("33 is not prime");
         }

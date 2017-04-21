@@ -6,7 +6,7 @@ public class CSharpExam : Exam
     {
         if (score < 0)
         {
-            throw new NullReferenceException();
+            throw new ArgumentException("Score cannot be negative.");
         }
 
         this.Score = score;
@@ -18,7 +18,7 @@ public class CSharpExam : Exam
     {
         if (this.Score < 0 || this.Score > 100)
         {
-            throw new InvalidOperationException();
+            throw new InvalidOperationException("The Score must be larger than 0 and smaller than 100.");
         }
         else
         {

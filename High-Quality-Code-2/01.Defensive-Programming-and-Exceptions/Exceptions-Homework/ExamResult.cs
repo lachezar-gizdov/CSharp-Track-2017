@@ -6,22 +6,22 @@ public class ExamResult
     {
         if (grade < 0)
         {
-            throw new Exception();
+            throw new ArgumentException("The grade cannot be negative.");
         }
 
         if (minGrade < 0)
         {
-            throw new Exception();
+            throw new ArgumentException("Minimal grade cannot be negative.");
         }
 
         if (maxGrade <= minGrade)
         {
-            throw new Exception();
+            throw new ArgumentException("Maximum grade cannot be larger or equal to minimum grade.");
         }
 
         if (comments == null || comments == string.Empty)
         {
-            throw new Exception();
+            throw new ArgumentException("Comments cannot be null or empty.");
         }
 
         this.Grade = grade;
