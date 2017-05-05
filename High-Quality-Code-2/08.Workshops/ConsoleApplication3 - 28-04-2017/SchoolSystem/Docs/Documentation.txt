@@ -1,5 +1,5 @@
 ﻿Bottleneck description: --------------------
-#1:
+#1: WriteLine method is the bottle neck
 
 
 Bug reports: --------------------
