@@ -125,3 +125,62 @@ CREATE TABLE Groups
     Id INT IDENTITY PRIMARY KEY,
     Name NVARCHAR(20) UNIQUE
 )
+
+--Task 18
+ALTER TABLE Users
+ADD GroupId INT FOREIGN KEY REFERENCES Groups(GroupId)
+
+INSERT INTO Groups
+    (Name)
+VALUES
+    ('Guests')
+INSERT INTO Groups
+    (Name)
+VALUES
+    ('Moderators')
+INSERT INTO Groups
+    (Name)
+VALUES
+    ('SysAdmins')
+INSERT INTO Groups
+    (Name)
+VALUES
+    ('Users')
+
+UPDATE Users
+SET GroupId = 5
+WHERE Id = 2
+UPDATE Users
+SET GroupId = 1
+WHERE Id = 1
+
+--Task 19
+INSERT INTO Users
+    (UserName, UserPassword, FullName, LastLoginTime, GroupId)
+VALUES
+    ('user13', 'parola1234', 'gosho peshev', GETDATE(), 6),
+    ('user42', 'parola234', 'pesho goshov', GETDATE(), 5),
+    ('user99', 'parola34', 'stamat peshev', GETDATE(), 7)
+
+INSERT INTO Groups
+    (Name)
+VALUES
+    ('Super Users'),
+    ('Editors'),
+    ('DB Admins')
+
+--Task 20
+UPDATE Users
+SET UserName = 'Edited User'
+WHERE Id = 5
+
+UPDATE Groups
+SET Name = 'Edited Group'
+WHERE GroupId = 5
+
+--Task 21
+DELETE FROM Users
+WHERE Id = 4
+
+DELETE FROM Groups
+WHERE GroupId = 8
